@@ -62,19 +62,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DrawingModule\DrawingModulePL.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="DrawingModule\DrawingModulePL.Designer.cs">
-      <DependentUpon>DrawingModulePL.cs</DependentUpon>
-    </Compile>
-    <Compile Include="DrawingModule\DrawingModuleBL.cs" />
-    <Compile Include="DrawingModule\FactorySupportDrawingModule.cs" />
-    <Compile Include="DrawingModule\PrintPath.cs" />
-    <Compile Include="DrawingModule\_interfaces\IDrawingModuleBL.cs" />
-    <Compile Include="DrawingModule\_interfaces\IDrawingModulePL.cs" />
-    <Compile Include="DrawingModule\_interfaces\IFactorySupportDrawingModule.cs" />
-    <Compile Include="DrawingModule\_interfaces\IPrintPath.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -83,9 +70,6 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="DrawingModule\DrawingModulePL.resx">
-      <DependentUpon>DrawingModulePL.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>

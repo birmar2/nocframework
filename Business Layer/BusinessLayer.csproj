@@ -61,8 +61,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DrawingModule\Dikstra.cs" />
-    <Compile Include="DrawingModule\_interfaces\IDijkstra.cs" />
     <Compile Include="ErrorService.cs" />
     <Compile Include="FactorySupport.cs.cs" />
     <Compile Include="FrameWork.cs" />

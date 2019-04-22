@@ -5,8 +5,6 @@ using Common;
 using Common.Interfaces;
 using Common.Models;
 using LiteDB;
-using PresentationLayer.DrawingModule;
-using PresentationLayer.DrawingModule._interfaces;
 using Serilog;
 using System;
 using System.Collections.Generic;
@@ -27,7 +25,7 @@ namespace PresentationLayer
 
         private EventMediator eventMediator;
 
-        private IDrawingModulePL drawingModulePL;
+        
 
         private Random rnd;
 
@@ -60,8 +58,6 @@ namespace PresentationLayer
             LiteRepository repo = new LiteRepository(ApplicationConfig.DbConnectionString);
 
             frameWork = factorySupport.Create(isMySQL, repo, eventMediator);
-
-            drawingModulePL = new DrawingModulePL(uiFactory, frameWork, eventMediator);
 
             InitializeComponent();
 
@@ -371,7 +367,6 @@ namespace PresentationLayer
 
         private void ButtonClickOpenDrawingModule(object sender, EventArgs e)
         {
-            ((DrawingModulePL)drawingModulePL).ShowDialog();
         }
 
         /// <summary>
