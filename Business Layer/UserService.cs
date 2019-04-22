@@ -27,7 +27,7 @@ namespace BusinessLayer
         /// <param name="newPassword">New password</param>
         /// <param name="oldPassword">Old password for authentication</param>
         /// <returns></returns>
-        public ValidationResult ChangePassword(string email, string newPassword)
+        ValidationResult IUserService.ChangePassword(string email, string newPassword)
         {
             User user = GetUser(email);
             logService.Create("Jelszóváltási kísérlet", user.Name);
@@ -74,7 +74,7 @@ namespace BusinessLayer
             return result;
         }
 
-        public bool CreateUser(User toBeCreated)
+        bool IUserService.CreateUser(User toBeCreated)
         {
             if (dataRepo.GetUser(toBeCreated.Email) is User)
             {
@@ -101,7 +101,7 @@ namespace BusinessLayer
             }
         }
 
-        public bool DeleteUser(User toDelete)
+        bool IUserService.DeleteUser(User toDelete)
         {
             return dataRepo.DeleteUser(toDelete);
         }
@@ -111,7 +111,7 @@ namespace BusinessLayer
             return dataRepo.GetUser(email);
         }
 
-        public bool LoginUser(string username, string password)
+        bool IUserService.LoginUser(string username, string password)
         {
             var userRecord = dataRepo.GetUser(username);
             if (userRecord != null)
@@ -127,7 +127,12 @@ namespace BusinessLayer
             }
         }
 
-        public bool UpdateUser(User toBeUpdated)
+        bool IUserService.UpdateUser(User toBeUpdated)
+        {
+            return UpdateUser(toBeUpdated);
+        }
+
+        private bool UpdateUser(User toBeUpdated)
         {
 
             if (dataRepo.UpdateUser(toBeUpdated))
@@ -141,7 +146,7 @@ namespace BusinessLayer
                 return false;
             }
         }
-        public bool UpdateUserSetting(DisplayableUserData toBeUpdatedSettings)
+        bool IUserService.UpdateUserSetting(DisplayableUserData toBeUpdatedSettings)
         {
             var fulldata = dataRepo.GetUser(toBeUpdatedSettings.Id);
 
@@ -151,7 +156,7 @@ namespace BusinessLayer
             return UpdateUser(fulldata);
         }
 
-        public DisplayableUserData GetUserData(int id)
+        DisplayableUserData IUserService.GetUserData(int id)
         {
             var userRecord = dataRepo.GetUser(id);
 
@@ -165,7 +170,7 @@ namespace BusinessLayer
             };
             return userSettings;
         }
-        public DisplayableUserData GetUserData(string email)
+        DisplayableUserData IUserService.GetUserData(string email)
         {
             var userRecord = GetUser(email);
             var result = new DisplayableUserData()

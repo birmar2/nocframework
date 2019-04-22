@@ -23,7 +23,7 @@ namespace PresentationLayer
             if (loginForm.UserSuccessfullyAuthenticated)
             {
                 MainForm mainForm = new MainForm();
-                mainForm.Controls["loggedInAs"].Text = "Bejelentkezve, mint "+ loginForm.userName;
+                mainForm.Controls["loggedInAs"].Text = "Bejelentkezve, mint "+ loginForm.UserName;
                 Application.Run(mainForm);
             }
 

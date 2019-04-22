@@ -10,13 +10,19 @@ namespace DataLayer.Interfaces
 
         User GetUser(int id);
 
+        Groups GetGroup(int id);
+
         bool InsertUser(User user);
 
-        bool InsertGroup(Groups Groups);
+        bool InsertGroup(Groups groups);
 
         bool UpdateUser(User user);
 
+        bool UpdateGroup(Groups groups);
+
         bool DeleteUser(User user);
+
+        bool DeleteGroup(Groups groups);
 
         IError InsertItemActive(IItemActive item);
 

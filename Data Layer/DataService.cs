@@ -62,7 +62,7 @@ namespace DataLayer
         /// <summary>
         /// Gets a user from database by email, returns null if not found
         /// </summary>
-        public User GetUser(string email)
+        User IDataService.GetUser(string email)
         {
             return repo.Query<User>().ToList().SingleOrDefault(u => u.Email == email);
         }
@@ -72,15 +72,20 @@ namespace DataLayer
         /// </summary>
         /// <param name="id">Id of the user</param>
         /// <returns>User</returns>
-        public User GetUser(int id)
+        User IDataService.GetUser(int id)
         {
             return repo.Query<User>().ToList().SingleOrDefault(i => i.Id == id);
+        }
+
+        Groups IDataService.GetGroup(int id)
+        {
+            return repo.Query<Groups>().ToList().SingleOrDefault(i => i.Id == id);
         }
 
         /// <summary>
         /// Inserts a user to the database. Returns true if successful
         /// </summary>
-        public bool InsertUser(User user)
+        bool IDataService.InsertUser(User user)
         {
             IError error = ErrorInit();
 
@@ -98,20 +103,48 @@ namespace DataLayer
             }
         }
 
+        bool IDataService.InsertGroup(Groups groups)
+        {
+            IError error = ErrorInit();
+
+            try
+            {
+                repo.Insert(groups);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                error = Helpers.ErrorMessage(ErrorType.NoUniqueID,
+                    ex.Message);
+                errorService.Write(error);
+                return false;
+            }
+        }
+
         /// <summary>
         /// Updates a user in the database. Returns false if not found in the collection.
         /// </summary>
-        public bool UpdateUser(User user)
+        bool IDataService.UpdateUser(User user)
         {
             return repo.Update(user);
+        }
+
+        bool IDataService.UpdateGroup(Groups groups)
+        {
+            return repo.Update(groups);
         }
 
         /// <summary>
         /// Deletes a user from the database based on ID.
         /// </summary>
-        public bool DeleteUser(User user)
+        bool IDataService.DeleteUser(User user)
         {
             return repo.Delete<User>(u => u.Id == user.Id) > 0;
+        }
+
+        bool IDataService.DeleteGroup(Groups groups)
+        {
+            return repo.Delete<Groups>(u => u.Id == groups.Id) > 0;
         }
 
         IError IDataService.DeleteConnection(IConnection connection)
@@ -181,8 +214,6 @@ namespace DataLayer
         {
             throw new NotImplementedException();
         }
-
-       
 
         IList<IItemPassive> IDataService.GetItemPassive()
         {
@@ -273,8 +304,6 @@ namespace DataLayer
         {
             throw new NotImplementedException();
         }
-
-        
 
         private static IError ErrorInit()
         {

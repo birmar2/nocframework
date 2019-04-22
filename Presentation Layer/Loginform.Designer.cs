@@ -44,9 +44,9 @@
             this.label1.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.label1.Location = new System.Drawing.Point(56, 62);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(133, 23);
+            this.label1.Size = new System.Drawing.Size(213, 23);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Felhasználónév:";
+            this.label1.Text = "Email cím (felhasználónév)";
             // 
             // label2
             // 
@@ -115,7 +115,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(248, 450);
+            this.ClientSize = new System.Drawing.Size(295, 460);
             this.Controls.Add(this.linkLabel1);
             this.Controls.Add(this.uname);
             this.Controls.Add(this.errorLabel);

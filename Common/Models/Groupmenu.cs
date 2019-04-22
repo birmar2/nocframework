@@ -19,7 +19,7 @@ namespace Common.Models
             get; set;
         }
 
-        public Group Group
+        public Groups groups
         {
             get; set;
         }

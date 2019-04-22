@@ -16,9 +16,9 @@ namespace PresentationLayer
 {
     public partial class Loginform : Form
     {
-        public bool UserSuccessfullyAuthenticated { get; private set; }
-        public string userName { get; private set; }
-        public string userMail { get; private set; }
+       
+
+
 
         // switch between MySQL or LiteDB
         private readonly bool isMySQL = false;
@@ -26,6 +26,13 @@ namespace PresentationLayer
         private IFrameWork frameWork;
         private EventMediator eventMediator;
         private IUserService userService;
+
+        public bool UserSuccessfullyAuthenticated { get; private set; }
+        public string UserName { get; private set; }
+        public string UserMail { get; private set; }
+
+        public DisplayableUserData UserData { get; private set; }
+
         public Loginform()
         {
 
@@ -106,24 +113,37 @@ namespace PresentationLayer
 
         private void submitbtn_Click(object sender, EventArgs e)
         {
-            userName = uname.Text;
-            userMail = "birmar2@index.hu";
+            // Arra kell figyelni, hogy a userName = email címmel a UserService-ben !!!!
+            UserMail = uname.Text;
             string pw = password.Text;
 
             var user = new User()
             {
-                Name = userName,
-                Email = userMail,
+                Name = "Marci",
+                Email = UserMail,
                 Password = pw,
                 Group_id = "1"
             };
 
-            if (userName.Trim() != string.Empty && pw.Trim() != string.Empty)
+            if (UserMail.Trim() != string.Empty && pw.Trim() != string.Empty)
             {
                 userService.CreateUser(user);
-                userService.LoginUser(userName, pw);
-                UserSuccessfullyAuthenticated = true;
+                // Arra kell figyelni, hogy a userName = email címmel a UserService-ben !!!!
+                UserSuccessfullyAuthenticated = userService.LoginUser(UserMail, pw);
+
+                if (!UserSuccessfullyAuthenticated)
+                {
+                    MessageBox.Show("Sikertelen bejelentkezés!");
+                    return;
+                }
+                else
+                {
+                    // user adatainak lekérése
+                    UserData = userService.GetUserData(UserMail);
+                    MessageBox.Show("Sikeres bejelentkezés " + UserData.Name + " " + UserData.Email);
                 Close();
+                }
+                
             }
 
             //System.Windows.Forms.MessageBox.Show(uName);
