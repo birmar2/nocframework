@@ -82,6 +82,7 @@
     <Compile Include="Interfaces\IValidationAttribute.cs" />
     <Compile Include="Models\Connection.cs" />
     <Compile Include="Models\DiplayableUserData.cs" />
+    <Compile Include="Models\Group.cs" />
     <Compile Include="Models\Symbol.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Models\ValidationResult.cs" />

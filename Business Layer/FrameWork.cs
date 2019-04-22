@@ -67,6 +67,10 @@ namespace BusinessLayer
             {
                 service = errorService;
             }
+            else if (type == typeof(IUserService))
+            {
+                service = userService;
+            }
 
             return service;
         }
