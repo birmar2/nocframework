@@ -23,6 +23,11 @@ namespace Common.Models
             get; set;
         }
 
+        public string Group_id
+        {
+            get; set;
+        }
+
         public List<string> OldPasswords
         {
             get; set;

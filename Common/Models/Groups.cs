@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Common.Models
 {
-    class Group
+    class Groups
     {
         public int Id
         {

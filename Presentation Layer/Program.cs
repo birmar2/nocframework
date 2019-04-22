@@ -16,7 +16,17 @@ namespace PresentationLayer
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Loginform());
+
+            Loginform loginForm = new Loginform();
+            Application.Run(loginForm);
+
+            if (loginForm.UserSuccessfullyAuthenticated)
+            {
+                MainForm mainForm = new MainForm();
+                mainForm.Controls["loggedInAs"].Text = "Bejelentkezve, mint "+ loginForm.userName;
+                Application.Run(mainForm);
+            }
+
         }
     }
 }

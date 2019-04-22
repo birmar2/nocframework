@@ -12,6 +12,8 @@ namespace DataLayer.Interfaces
 
         bool InsertUser(User user);
 
+        bool InsertGroup(Groups Groups);
+
         bool UpdateUser(User user);
 
         bool DeleteUser(User user);
